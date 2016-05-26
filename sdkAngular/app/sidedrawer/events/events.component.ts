@@ -5,6 +5,8 @@ import {Page} from "ui/page";
 import {ActionItem} from "ui/action-bar";
 import sideDrawerModule = require('nativescript-telerik-ui-pro/sidedrawer');
 import {RadSideDrawerComponent, SideDrawerType, MainTemplateDirective, DrawerTemplateDirective} from "nativescript-telerik-ui-pro/sidedrawer/angular/side-drawer-directives";
+import { Router, RouteParams } from "angular2/router";
+
 
 // >> sidedrawer-angular-callbacks-definition
 @Component({
@@ -13,7 +15,7 @@ import {RadSideDrawerComponent, SideDrawerType, MainTemplateDirective, DrawerTem
     templateUrl: 'sidedrawer/events/events.component.html'
 })
 export class AppComponent {
-    constructor(@Inject(Page) private page: Page) {
+    constructor(@Inject(Page) private page: Page, private _router: Router, private _routeParams: RouteParams) {
     }
 
     @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
@@ -43,5 +45,30 @@ export class AppComponent {
     public onDrawerClosed() {
          console.log("Drawer closed");
     }
+    /**
+     * name
+     */
+    public clickSocial() {
+        console.log('estoy en social');
+        this._router.navigate(["SideDrawerTransitions"]);
+        
+    }
+    public clickPromotions() {
+        console.log('estoy en promociones')
+        this._router.navigate(["ListViewPullToRefresh"]);
+    }
+    public clickImportant() {
+        console.log('estoy en importantes')
+    }
+    public clickStarred() {
+        console.log('estoy en la starred')
+    }
+    public clickMail() {
+        console.log('estoy en la mail')
+    }
+    public clickDrafts() {
+        console.log('estoy en la drafts')
+    }
+    
 }
 // << sidedrawer-angular-callbacks-definition
